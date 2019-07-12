@@ -16,4 +16,8 @@ public class Coin {
     public void setName(String name) {
         this.name = name;
     }
+
+    public double printTotalValue(int quantity) {
+        return quantity * value;
+    }
 }

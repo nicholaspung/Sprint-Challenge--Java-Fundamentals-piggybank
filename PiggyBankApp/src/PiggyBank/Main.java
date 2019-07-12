@@ -9,10 +9,10 @@ public class Main {
         DecimalFormat fp = new DecimalFormat("$###,###.00");
 
         Coin dollar = new Coin("Dollar", 1.00);
-        Coin quarter = new Coin("Quarter", 1.00);
-        Coin dime = new Coin("Dime", 1.00);
-        Coin nickel = new Coin("Nickel", 1.00);
-        Coin penny = new Coin("Penny", 1.00);
+        Coin quarter = new Coin("Quarter", 0.25);
+        Coin dime = new Coin("Dime", 0.10);
+        Coin nickel = new Coin("Nickel", 0.05);
+        Coin penny = new Coin("Penny", 0.01);
 
         HashMap<Coin, Integer> piggyBank = new HashMap<>();
         piggyBank.put(dollar, 0);
@@ -37,6 +37,8 @@ public class Main {
         System.out.println("Nickel: " + piggyBank.get(nickel));
         System.out.println("Penny: " + piggyBank.get(penny));
 
-//        System.out.println("The piggy bank holds " + fp.format(myValue));
+        double myValue = dollar.printTotalValue(piggyBank.get(dollar)) + quarter.printTotalValue(piggyBank.get(quarter)) + dime.printTotalValue(piggyBank.get(dime)) + nickel.printTotalValue(piggyBank.get(nickel)) + penny.printTotalValue(piggyBank.get(penny));
+
+        System.out.println("The piggy bank holds " + fp.format(myValue));
     }
 }
