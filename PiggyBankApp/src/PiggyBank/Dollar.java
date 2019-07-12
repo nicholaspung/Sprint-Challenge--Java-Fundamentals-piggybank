@@ -1,15 +1,15 @@
 package PiggyBank;
 
-public abstract class Coin {
-    private String name;
-    private double value;
+public class Dollar extends Coin {
+    private String name = "Dollar";
+    private double value = 1.00;
     private int quantity;
 
-    public Coin() {
+    public Dollar() {
         quantity = 1;
     }
 
-    public Coin(int quantity) {
+    public Dollar(int quantity) {
         this.quantity = quantity;
     }
 
