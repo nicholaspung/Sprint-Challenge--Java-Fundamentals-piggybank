@@ -1,0 +1,75 @@
+package PiggyBank;
+
+import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        DecimalFormat fp = new DecimalFormat("$###,###.00");
+
+//        Coin dollar = new Coin("Dollar", 1.00);
+//        Coin quarter = new Coin("Quarter", 0.25);
+//        Coin dime = new Coin("Dime", 0.10);
+//        Coin nickel = new Coin("Nickel", 0.05);
+//        Coin penny = new Coin("Penny", 0.01);
+
+//        HashMap<Coin, Integer> piggyBank = new HashMap<>();
+//        piggyBank.put(dollar, 0);
+//        piggyBank.put(quarter, 0);
+//        piggyBank.put(dime, 0);
+//        piggyBank.put(nickel, 0);
+//        piggyBank.put(penny, 0);
+//
+//        piggyBank.put(dollar, piggyBank.get(dollar) + 10);
+//        piggyBank.put(quarter, piggyBank.get(quarter) + 1);
+//        piggyBank.put(dime, piggyBank.get(dime) + 1);
+//        piggyBank.put(nickel, piggyBank.get(nickel) + 1);
+//        piggyBank.put(penny, piggyBank.get(penny) + 1);
+//        piggyBank.put(dollar, piggyBank.get(dollar) + 20);
+//
+//        ArrayList<HashMap.Entry<Coin, Integer>> piggyBankArray = new ArrayList<>();
+//        piggyBankArray.addAll(piggyBank.entrySet());
+//
+//        System.out.println("Dollar: " + piggyBank.get(dollar));
+//        System.out.println("Quarter: " + piggyBank.get(quarter));
+//        System.out.println("Dime: " + piggyBank.get(dime));
+//        System.out.println("Nickel: " + piggyBank.get(nickel));
+//        System.out.println("Penny: " + piggyBank.get(penny));
+//
+//        double myValue = dollar.printTotalValue(piggyBank.get(dollar)) + quarter.printTotalValue(piggyBank.get(quarter)) + dime.printTotalValue(piggyBank.get(dime)) + nickel.printTotalValue(piggyBank.get(nickel)) + penny.printTotalValue(piggyBank.get(penny));
+
+        ArrayList<Coin> piggyBank = new ArrayList<>();
+        HashMap<Coin, Integer> piggyBankTotal = new HashMap<>();
+
+        piggyBank.add(new Dollar(5));
+        piggyBank.add(new Quarter(1));
+        piggyBank.add(new Dime());
+        piggyBank.add(new Nickel(3));
+        piggyBank.add(new Dime(7));
+        piggyBank.add(new Dollar());
+        piggyBank.add(new Penny(10));
+
+        double myValue = 0;
+
+        for (Coin c : piggyBank) {
+            c.printAdded();
+            myValue += c.printTotalValue();
+            if (piggyBankTotal.get(c) == null) {
+                piggyBankTotal.put(c, c.getQuantity());
+            } else {
+                int newQuantity = piggyBankTotal.get(c.getName()) + c.getQuantity();
+                piggyBankTotal.put(c, newQuantity);
+            }
+        }
+
+        System.out.println("The piggy bank holds " + fp.format(myValue));
+
+        ArrayList<HashMap.Entry<Coin, Integer>> piggyBankTotalCollection = new ArrayList<>();
+        piggyBankTotalCollection.addAll(piggyBankTotal.entrySet());
+        for (HashMap.Entry<Coin, Integer> p : piggyBankTotalCollection) {
+            System.out.println(p.getKey().getName() + " " + p.getValue());
+        }
+
+    }
+}
