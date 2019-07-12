@@ -21,14 +21,14 @@ public class Nickel extends Coin {
         this.name = name;
     }
 
-    public double printTotalValue(int quantity) {
+    public double printTotalValue() {
         return quantity * value;
     }
 
     public void printAdded() {
         if (quantity > 1) {
-            System.out.println(quantity + name + "s");
+            System.out.println(quantity + " " + name + "s");
         }
-        System.out.println(quantity + name);
+        System.out.println(quantity + " " + name);
     }
 }

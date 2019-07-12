@@ -41,8 +41,13 @@ public class Main {
 
         ArrayList<Coin> piggyBank = new ArrayList<>();
 
+        piggyBank.add(new Dollar());
+
+        for (Coin c : piggyBank) {
+            c.printAdded();
+        }
 
 
-        System.out.println("The piggy bank holds " + fp.format(myValue));
+//        System.out.println("The piggy bank holds " + fp.format(myValue));
     }
 }
