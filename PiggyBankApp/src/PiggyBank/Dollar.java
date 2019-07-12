@@ -28,4 +28,8 @@ public class Dollar extends Coin {
     public void printAdded() {
         System.out.println("$" + quantity);
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

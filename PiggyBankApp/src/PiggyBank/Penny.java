@@ -32,4 +32,8 @@ public class Penny extends Coin {
             System.out.println(quantity + " " + name);
         }
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

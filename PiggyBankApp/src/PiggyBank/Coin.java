@@ -32,4 +32,8 @@ public abstract class Coin {
             System.out.println(quantity + " " + name);
         }
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

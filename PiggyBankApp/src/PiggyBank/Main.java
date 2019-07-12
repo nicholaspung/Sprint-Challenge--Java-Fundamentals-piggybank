@@ -2,6 +2,7 @@ package PiggyBank;
 
 import java.util.ArrayList;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +40,7 @@ public class Main {
 //        double myValue = dollar.printTotalValue(piggyBank.get(dollar)) + quarter.printTotalValue(piggyBank.get(quarter)) + dime.printTotalValue(piggyBank.get(dime)) + nickel.printTotalValue(piggyBank.get(nickel)) + penny.printTotalValue(piggyBank.get(penny));
 
         ArrayList<Coin> piggyBank = new ArrayList<>();
+        HashMap<Coin, Integer> piggyBankTotal = new HashMap<>();
 
         piggyBank.add(new Dollar(5));
         piggyBank.add(new Quarter(1));
@@ -53,8 +55,21 @@ public class Main {
         for (Coin c : piggyBank) {
             c.printAdded();
             myValue += c.printTotalValue();
+            if (piggyBankTotal.get(c) == null) {
+                piggyBankTotal.put(c, c.getQuantity());
+            } else {
+                int newQuantity = piggyBankTotal.get(c.getName()) + c.getQuantity();
+                piggyBankTotal.put(c, newQuantity);
+            }
         }
 
         System.out.println("The piggy bank holds " + fp.format(myValue));
+
+        ArrayList<HashMap.Entry<Coin, Integer>> piggyBankTotalCollection = new ArrayList<>();
+        piggyBankTotalCollection.addAll(piggyBankTotal.entrySet());
+        for (HashMap.Entry<Coin, Integer> p : piggyBankTotalCollection) {
+            System.out.println(p.getKey().getName() + " " + p.getValue());
+        }
+
     }
 }
