@@ -28,7 +28,8 @@ public class Dime extends Coin {
     public void printAdded() {
         if (quantity > 1) {
             System.out.println(quantity + " " + name + "s");
+        } else {
+            System.out.println(quantity + " " + name);
         }
-        System.out.println(quantity + " " + name);
     }
 }

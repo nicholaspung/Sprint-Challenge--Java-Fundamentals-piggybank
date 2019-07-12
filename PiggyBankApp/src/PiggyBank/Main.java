@@ -42,6 +42,10 @@ public class Main {
         ArrayList<Coin> piggyBank = new ArrayList<>();
 
         piggyBank.add(new Dollar());
+        piggyBank.add(new Quarter(3));
+        piggyBank.add(new Dime(10));
+        piggyBank.add(new Dollar(2));
+        piggyBank.add(new Penny(6));
 
         for (Coin c : piggyBank) {
             c.printAdded();

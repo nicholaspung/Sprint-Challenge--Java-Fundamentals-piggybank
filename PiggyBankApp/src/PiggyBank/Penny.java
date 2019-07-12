@@ -27,8 +27,9 @@ public class Penny extends Coin {
 
     public void printAdded() {
         if (quantity > 1) {
-            System.out.println(quantity + " " + name + "s");
+            System.out.println(quantity + " Pennies");
+        } else {
+            System.out.println(quantity + " " + name);
         }
-        System.out.println(quantity + " " + name);
     }
 }
